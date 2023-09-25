@@ -5,11 +5,14 @@ import { InfoIcon } from "./icons";
 import { useTodosLS } from "../hooks/useTodosLS";
 import { useUserLS } from "../hooks/useUsernameLS";
 import { useTodosLeft } from "../hooks/useTodosLeft";
+import Header from "./components/Header";
 
 function App() {
   const [todos, setTodos] = useTodosLS("todos", []);
   const [username, setUsername, key] = useUserLS("username", "");
   const remainingTodos = useTodosLeft(todos);
+
+  const sortedTodos = [...todos].sort((a, b) => b.createdAt - a.createdAt);
 
   const handleOnBlurSubmit = () => {
     localStorage.setItem(key, JSON.stringify(username));
@@ -21,45 +24,14 @@ function App() {
     document.activeElement.blur();
   };
 
-  const sortedTodos = [...todos].sort((a, b) => b.createdAt - a.createdAt);
-
   return (
     <div className="border border-zinc-800 max-w-[620px] h-[700px] bg-zinc-900 w-full rounded-lg flex flex-col p-[18px] pb-0">
-      <div className="mb-4 flex flex-row justify-between">
-        <h1 className="text-3xl font-semibold flex flex-row items-center gap-2">
-          Hello
-          <span>
-            <form onSubmit={handleKeySubmit}>
-              <input
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
-                value={username}
-                type="text"
-                placeholder="You"
-                className="input input-ghost w-auto max-w-xs text-3xl pl-0"
-                onBlur={handleOnBlurSubmit}
-              />
-            </form>
-          </span>
-        </h1>
-        <div className="flex flex-col">
-          <a
-            href="https://github.com/itsJosephV"
-            target="_blank"
-            className="text-[14px] text-end font-mono text-zinc-300 underline underline-offset-2 decoration-zinc-500 hover:decoration-zinc-200 cursor-pointer"
-          >
-            Source
-          </a>
-          <a
-            href="https://github.com/itsJosephV"
-            target="_blank"
-            className="text-[14px] text-end font-mono text-zinc-300 underline underline-offset-2 decoration-zinc-500 hover:decoration-zinc-200 cursor-pointer"
-          >
-            Portfolio
-          </a>
-        </div>
-      </div>
+      <Header
+        handleOnBlurSubmit={handleOnBlurSubmit}
+        handleKeySubmit={handleKeySubmit}
+        setUsername={setUsername}
+        username={username}
+      />
       <section className="mb-7">
         <TodoForm setTodos={setTodos} />
       </section>
