@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
+import CategoryRadio from "./CategoryRadio";
 
 const TodoForm = ({ setTodos }) => {
   const [newTodo, setNewTodo] = useState("");
@@ -55,59 +56,27 @@ const TodoForm = ({ setTodos }) => {
         <label className="block text-sm font-medium text-gray-900 dark:text-white">
           Select a category
         </label>
-        <div className="flex items-center">
-          <input
-            id="personal-radio"
-            type="radio"
-            name="category"
-            value="personal"
-            checked={selectedCategory === "personal"}
-            onChange={handleRadioChange}
-            className="radio radio-neutral-content "
-          />
-          <label
-            htmlFor="personal-radio"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            Personal
-          </label>
-        </div>
-
-        <div className="flex items-center">
-          <input
-            id="bussiness-radio"
-            type="radio"
-            name="category"
-            value="bussiness"
-            checked={selectedCategory === "bussiness"}
-            onChange={handleRadioChange}
-            className="radio radio-accent"
-          />
-          <label
-            htmlFor="bussiness-radio"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            Bussiness
-          </label>
-        </div>
-
-        <div className="flex items-center">
-          <input
-            id="education-radio"
-            type="radio"
-            name="category"
-            value="education"
-            checked={selectedCategory === "education"}
-            onChange={handleRadioChange}
-            className="radio radio-error"
-          />
-          <label
-            htmlFor="education-radio"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            Education
-          </label>
-        </div>
+        <CategoryRadio
+          name={"category"}
+          value={"personal"}
+          className={"radio radio-neutral-content"}
+          selectedCategory={selectedCategory}
+          handleRadioChange={handleRadioChange}
+        />
+        <CategoryRadio
+          name={"category"}
+          value={"bussiness"}
+          className={"radio radio-accent"}
+          selectedCategory={selectedCategory}
+          handleRadioChange={handleRadioChange}
+        />
+        <CategoryRadio
+          name={"category"}
+          value={"education"}
+          className={"radio radio-error"}
+          selectedCategory={selectedCategory}
+          handleRadioChange={handleRadioChange}
+        />
       </div>
       <button type="submit" className="btn btn-full btn-neutral">
         Create

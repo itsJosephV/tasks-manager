@@ -93,7 +93,7 @@ const TodoCard = ({ id, todo, category, done, createdAt, todos, setTodos }) => {
         >
           <EditIcon width={"2em"} height={"2em"} fill={"#71717a"} />
         </button>
-        <button className="btn p-2 hover:border-red-600" onClick={handleDelete}>
+        <button className="btn p-2 hover:border-red-500" onClick={handleDelete}>
           <DeleteIcon width={"2em"} height={"2em"} fill={"#71717a"} />
         </button>
       </div>
