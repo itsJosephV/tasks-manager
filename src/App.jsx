@@ -6,6 +6,7 @@ import { useTodosLS } from "../hooks/useTodosLS";
 import { useUserLS } from "../hooks/useUsernameLS";
 import { useTodosLeft } from "../hooks/useTodosLeft";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   const [todos, setTodos] = useTodosLS("todos", []);
@@ -25,7 +26,7 @@ function App() {
   };
 
   return (
-    <div className="border border-zinc-800 max-w-[620px] h-[700px] bg-zinc-900 w-full rounded-lg flex flex-col p-[18px] pb-0 relative">
+    <div className="border border-zinc-800 max-w-[620px] min-h-[700px] bg-zinc-900 w-full rounded-lg flex flex-col p-[18px] pb-5 relative">
       <Header
         handleOnBlurSubmit={handleOnBlurSubmit}
         handleKeySubmit={handleKeySubmit}
@@ -69,11 +70,8 @@ function App() {
           )}
         </div>
       </section>
-      <div className="absolute bottom-0 left-0 right-0 text-center">
-        <small className="text-[11px] text-zinc-600">
-          Made with &hearts; by JosephV
-        </small>
-      </div>
+      <Footer />
+      
     </div>
   );
 }

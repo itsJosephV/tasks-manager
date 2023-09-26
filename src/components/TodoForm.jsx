@@ -52,31 +52,33 @@ const TodoForm = ({ setTodos }) => {
           maxLength={30}
         />
       </div>
-      <div className="border p-2 border-zinc-700 rounded-lg flex flex-row gap-5 items-center">
+      <div className="border p-2 border-zinc-700 rounded-lg flex md:flex-row flex-col gap-3 md:items-center">
         <label className="block text-sm font-medium text-gray-900 dark:text-white">
           Select a category
         </label>
-        <CategoryRadio
-          name={"category"}
-          value={"personal"}
-          className={"radio radio-neutral-content"}
-          selectedCategory={selectedCategory}
-          handleRadioChange={handleRadioChange}
-        />
-        <CategoryRadio
-          name={"category"}
-          value={"bussiness"}
-          className={"radio radio-accent"}
-          selectedCategory={selectedCategory}
-          handleRadioChange={handleRadioChange}
-        />
-        <CategoryRadio
-          name={"category"}
-          value={"education"}
-          className={"radio radio-error"}
-          selectedCategory={selectedCategory}
-          handleRadioChange={handleRadioChange}
-        />
+        <div className="flex md:flex-row flex-col gap-3">
+          <CategoryRadio
+            name={"category"}
+            value={"personal"}
+            className={"radio radio-neutral-content"}
+            selectedCategory={selectedCategory}
+            handleRadioChange={handleRadioChange}
+          />
+          <CategoryRadio
+            name={"category"}
+            value={"bussiness"}
+            className={"radio radio-accent"}
+            selectedCategory={selectedCategory}
+            handleRadioChange={handleRadioChange}
+          />
+          <CategoryRadio
+            name={"category"}
+            value={"education"}
+            className={"radio radio-error"}
+            selectedCategory={selectedCategory}
+            handleRadioChange={handleRadioChange}
+          />
+        </div>
       </div>
       <button type="submit" className="btn btn-full btn-neutral">
         Create
